@@ -7,13 +7,14 @@ if(mysqli_connect_error()){
     die("Connection Error");
 }
 
-$sql = "INSERT INTO users(first_name,last_name,email,pnumber,pwd)
+$sql = "INSERT INTO users(name,email,number,user_password,lname)
 VALUES(?,?,?,?,?);";
 $upload = $conn->prepare($sql);
-$upload->bind_param('sssss',$fname,$lname,$email,$pnumber,$pwd);
+$upload->bind_param('sssss',$fname,$email,$pnumber,$pwd,$lname);
 
 if($upload->execute()){
-    echo "Created suceesfully";
+    header("Location:login.php");
+    exit;
 }else{
     echo "Problem found: " . $conn->error;
 }
