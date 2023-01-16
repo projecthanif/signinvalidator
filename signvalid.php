@@ -1,8 +1,7 @@
 <?php
+    require_once('mydb.php');
+require_once("main.php");
     
-    function __autoload($class){
-    require_once($class . '.php');
-    }
 
 class Signvalid extends Main{
     public $fname;
